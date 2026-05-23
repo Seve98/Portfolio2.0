@@ -38,8 +38,8 @@ export const profile: Profile = {
     "Performance, accessibilità WCAG e type-safety come default",
     "Esperienza in progetti freelance, side builds e open source",
   ],
-  email: "info@severinosantalucia.dev",
-  phone: "+39 333 123 4567",
+  email: "severinosantalucia5@gmail.com",
+  phone: "+39 349 934 7058",
   location: "Italia, Remote",
   githubUser: "Seve98",
   socials: [
@@ -60,7 +60,7 @@ export const profile: Profile = {
     },
     {
       label: "Email",
-      href: "mailto:info@severinosantalucia.dev",
+      href: "mailto:severinosantalucia5@gmail.com",
       icon: "mail",
     },
   ],

@@ -148,20 +148,6 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative">
-        <motion.h2
-          aria-hidden
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9 }}
-          className="flex items-baseline gap-4 leading-[0.85] tracking-[-0.05em] whitespace-nowrap overflow-hidden px-6 md:px-10"
-        >
-          <span className="text-stroke-mint text-[18vw] font-bold">Lavoriamo</span>
-          <span className="text-white text-[18vw] font-bold">Insieme</span>
-        </motion.h2>
-      </div>
-
       <div className="border-t border-[rgb(var(--border))]">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
           <p className="text-zinc-500">
@@ -202,7 +188,7 @@ function BrandWordmark() {
         </span>
       </div>
       <span className="ml-[2px] font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-        frontend studio
+        frontend developer
       </span>
     </div>
   );

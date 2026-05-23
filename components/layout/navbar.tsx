@@ -178,7 +178,7 @@ function BrandBadge() {
           {profile.firstName}
         </span>
         <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
-          frontend studio
+          frontend developer
         </span>
       </div>
     </div>
