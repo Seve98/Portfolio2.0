@@ -163,13 +163,13 @@ export function Navbar() {
 function BrandBadge() {
   return (
     <div className="flex items-center gap-3">
-      <span className="relative inline-flex size-11 md:size-12 rounded-full overflow-hidden ring-2 ring-accent-red/40 bg-[rgb(var(--bg-elev))]">
+      <span className="relative inline-flex size-11 md:size-12 shrink-0">
         <Image
-          src="/avatar-seve.png"
+          src="/logo-s.png"
           alt={profile.name}
           fill
           sizes="48px"
-          className="object-cover"
+          className="object-contain"
           priority
         />
       </span>

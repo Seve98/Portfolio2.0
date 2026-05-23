@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight, Mail } from "lucide-react";
@@ -168,28 +169,25 @@ export function Footer() {
 }
 
 function BrandWordmark() {
-  const first = profile.firstName.toLowerCase();
-  const left = first.slice(0, 2);
-  const mid = first.slice(2, 3);
-  const right = first.slice(3);
   return (
-    <div className="flex flex-col leading-[0.9]">
-      <div className="flex items-baseline">
-        <span className="text-3xl font-bold text-white tracking-tight">
-          {left}
+    <div className="flex items-center gap-3">
+      <span className="relative inline-flex size-12 shrink-0">
+        <Image
+          src="/logo-s.png"
+          alt={profile.name}
+          fill
+          sizes="48px"
+          className="object-contain"
+        />
+      </span>
+      <div className="flex flex-col leading-tight">
+        <span className="text-lg font-bold text-white tracking-tight">
+          {profile.firstName}
         </span>
-        <span className="relative inline-flex items-center justify-center size-10 rounded-full bg-accent-red -mx-px">
-          <span className="text-xl font-bold text-black leading-none">
-            {mid}
-          </span>
-        </span>
-        <span className="text-3xl font-bold text-white tracking-tight">
-          {right}
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
+          frontend developer
         </span>
       </div>
-      <span className="ml-[2px] font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-        frontend developer
-      </span>
     </div>
   );
 }
