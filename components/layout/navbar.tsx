@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
@@ -160,29 +161,26 @@ export function Navbar() {
 }
 
 function BrandBadge() {
-  // Maxel-style wordmark: "Se" + mint circle with "v" inside + "erino"
-  const first = profile.firstName.toLowerCase();
-  const left = first.slice(0, 2);
-  const mid = first.slice(2, 3);
-  const right = first.slice(3);
   return (
-    <div className="flex flex-col leading-[0.9]">
-      <div className="flex items-baseline">
-        <span className="text-2xl md:text-[28px] font-bold text-white tracking-tight">
-          {left}
+    <div className="flex items-center gap-3">
+      <span className="relative inline-flex size-11 md:size-12 rounded-full overflow-hidden ring-2 ring-accent-red/40 bg-[rgb(var(--bg-elev))]">
+        <Image
+          src="/avatar-seve.png"
+          alt={profile.name}
+          fill
+          sizes="48px"
+          className="object-cover"
+          priority
+        />
+      </span>
+      <div className="flex flex-col leading-tight">
+        <span className="text-sm md:text-base font-bold text-white tracking-tight">
+          {profile.firstName}
         </span>
-        <span className="relative inline-flex items-center justify-center size-8 md:size-9 rounded-full bg-accent-red -mx-px">
-          <span className="text-base md:text-lg font-bold text-black leading-none">
-            {mid}
-          </span>
-        </span>
-        <span className="text-2xl md:text-[28px] font-bold text-white tracking-tight">
-          {right}
+        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
+          frontend studio
         </span>
       </div>
-      <span className="ml-[2px] font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500">
-        frontend studio
-      </span>
     </div>
   );
 }
