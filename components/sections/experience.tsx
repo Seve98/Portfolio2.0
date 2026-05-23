@@ -60,6 +60,7 @@ export function Experience() {
                 title={e.role}
                 subtitle={`${e.company} · ${e.location}`}
                 description={e.description}
+                links={e.links}
                 index={i}
                 isLast={i === experience.length - 1}
               />

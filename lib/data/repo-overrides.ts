@@ -59,6 +59,12 @@ export const repoOverrides: Record<string, RepoOverride> = {
     category: "SaaS",
     description: "Dashboard SaaS B2B con metriche live, billing e team management.",
   },
+  Progetto_Simulatore_Bolletta: {
+    title: "E-Planner",
+    category: "Web App",
+    description:
+      "Simulatore di bollette elettriche con calcolo consumi, fasce orarie e proiezione costi mensili.",
+  },
 };
 
 /**

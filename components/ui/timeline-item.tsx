@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   title: string;
   subtitle: string;
   description?: string;
+  links?: { label: string; href: string }[];
   index?: number;
   isLast?: boolean;
 };
@@ -17,6 +19,7 @@ export function TimelineItem({
   title,
   subtitle,
   description,
+  links,
   index = 0,
   isLast = false,
 }: Props) {
@@ -58,6 +61,22 @@ export function TimelineItem({
           <p className="text-sm text-zinc-500 leading-relaxed max-w-[62ch]">
             {description}
           </p>
+        )}
+        {links && links.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[rgb(var(--border-strong))] bg-[rgb(var(--bg-elev))] px-3 h-8 text-xs font-medium text-white hover:border-accent-red hover:text-accent-red transition-colors"
+              >
+                {l.label}
+                <ArrowUpRight size={12} />
+              </a>
+            ))}
+          </div>
         )}
       </motion.div>
     </motion.li>
