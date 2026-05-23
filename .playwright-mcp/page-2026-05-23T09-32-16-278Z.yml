@@ -1,0 +1,18 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - heading "preview.themeforest.net" [level=1] [ref=e5]
+      - heading "Esecuzione della verifica di sicurezza" [level=2] [ref=e6]
+      - paragraph [ref=e7]: Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web.
+  - contentinfo [ref=e14]:
+    - generic [ref=e16]:
+      - generic [ref=e18]:
+        - text: "Ray ID:"
+        - code [ref=e19]: a0030d684cb116a3
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: Prestazioni e sicurezza di
+          - link "Cloudflare" [ref=e22] [cursor=pointer]:
+            - /url: https://www.cloudflare.com?utm_source=challenge&utm_campaign=m
+        - link "Privacy" [ref=e24] [cursor=pointer]:
+          - /url: https://www.cloudflare.com/it-it/privacypolicy/
