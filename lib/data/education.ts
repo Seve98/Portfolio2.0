@@ -7,31 +7,24 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
-    years: "2024",
-    title: "Next.js 15 · App Router & Server Components",
-    institution: "Documentazione ufficiale + project-based learning",
+    years: "Ott 2025",
+    title: "Specializzazione React JS",
+    institution: "Aulab · ID 164634954",
     description:
-      "Deep dive su data fetching, caching, ISR, Server Actions e Streaming UI.",
+      "Specializzazione post-bootcamp su React.js: componenti, hooks, state management e integrazione con HTML.",
   },
   {
-    years: "2023–2024",
-    title: "React + TypeScript",
-    institution: "Self-taught · Open source",
+    years: "Lug 2025",
+    title: "Full Stack Web Developer · Hackademy",
+    institution: "Aulab · ID 154455101",
     description:
-      "Pattern di composizione, custom hooks, typing avanzato, testing con Vitest e Testing Library.",
+      "Bootcamp full-stack: PHP, Laravel, JavaScript, HTML5, CSS3, Bootstrap, Git e database relazionali.",
   },
   {
-    years: "2022–2023",
-    title: "Angular Framework",
-    institution: "Self-paced",
+    years: "Mar 2025",
+    title: "HTML5 e CSS3 · La guida completa",
+    institution: "Udemy",
     description:
-      "Architettura modulare, RxJS, signals, forms reattivi, lifecycle dei componenti.",
-  },
-  {
-    years: "2021",
-    title: "Web Fundamentals",
-    institution: "Online resources · MDN",
-    description:
-      "HTML semantico, CSS Grid/Flexbox, JavaScript ES6+, DOM e fetch API.",
+      "Fondamenta del web moderno: HTML5 semantico, CSS3 con layout responsive e best practice di accessibilità.",
   },
 ];
