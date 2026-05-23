@@ -33,6 +33,7 @@ export const baseMetadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
   alternates: {
     canonical: "/",
