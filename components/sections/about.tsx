@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Check, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 import { Github } from "@/components/ui/brand-icons";
 import { profile } from "@/lib/data/profile";
 
@@ -57,26 +56,31 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 flex flex-col gap-6"
+            className="lg:col-span-6 flex flex-col gap-6"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))]">
-                <Image
-                  src="/severino-pro.png"
-                  alt={profile.name}
-                  fill
-                  sizes="(min-width: 1024px) 22vw, 45vw"
-                  className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[rgb(var(--border))] mt-10">
-                <Image
-                  src="/severino.png"
-                  alt={`${profile.name} al lavoro`}
-                  fill
-                  sizes="(min-width: 1024px) 22vw, 45vw"
-                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
-                />
+            <div className="relative rounded-2xl border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] p-8 md:p-10">
+              <Quote
+                className="absolute -top-4 -left-2 text-accent-red bg-[rgb(var(--bg))] rounded-full p-1 size-10"
+                fill="currentColor"
+              />
+              <p className="text-2xl md:text-3xl font-medium text-white leading-[1.3] tracking-[-0.01em]">
+                &ldquo;Ogni progetto è approcciato con chiarezza, collaborazione
+                e valore a lungo termine in mente.&rdquo;
+              </p>
+              <div className="mt-8 pt-6 border-t border-[rgb(var(--border))] flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex flex-col">
+                  <span className="font-bold text-white">{profile.name}</span>
+                  <span className="text-sm text-accent-red">
+                    Frontend Engineer
+                  </span>
+                </div>
+                <a
+                  href="#esperienza"
+                  className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--bg-elev))] border border-[rgb(var(--border-strong))] h-11 px-5 text-sm font-medium text-white hover:bg-[rgb(var(--border))] press"
+                >
+                  Vedi Esperienza
+                  <ArrowUpRight size={14} />
+                </a>
               </div>
             </div>
 
@@ -103,35 +107,9 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:col-span-7 flex flex-col gap-8"
+            className="lg:col-span-6 flex flex-col gap-6"
           >
-            <div className="relative rounded-2xl border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] p-6 md:p-8">
-              <Quote
-                className="absolute -top-4 -left-2 text-accent-red bg-[rgb(var(--bg))] rounded-full p-1 size-10"
-                fill="currentColor"
-              />
-              <p className="text-xl md:text-2xl font-medium text-white leading-[1.4] tracking-[-0.01em]">
-                &ldquo;Ogni progetto è approcciato con chiarezza, collaborazione
-                e valore a lungo termine in mente.&rdquo;
-              </p>
-              <div className="mt-6 pt-6 border-t border-[rgb(var(--border))] flex items-center justify-between gap-3 flex-wrap">
-                <div className="flex flex-col">
-                  <span className="font-bold text-white">{profile.name}</span>
-                  <span className="text-sm text-accent-red">
-                    Frontend Engineer
-                  </span>
-                </div>
-                <a
-                  href="#esperienza"
-                  className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--bg-elev))] border border-[rgb(var(--border-strong))] h-11 px-5 text-sm font-medium text-white hover:bg-[rgb(var(--border))] press"
-                >
-                  Vedi Esperienza
-                  <ArrowUpRight size={14} />
-                </a>
-              </div>
-            </div>
-
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col">
               {bullets.map((b, i) => (
                 <motion.li
                   key={b}
@@ -139,12 +117,12 @@ export function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: 0.1 * i }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-5 py-5 border-b border-[rgb(var(--border))] last:border-0"
                 >
-                  <span className="inline-flex items-center justify-center size-7 rounded-full border-2 border-accent-red text-accent-red shrink-0 mt-0.5">
-                    <Check size={14} />
+                  <span className="font-mono text-xs text-accent-red tabular-nums shrink-0 mt-2 tracking-[0.1em]">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-base md:text-lg font-semibold text-white leading-snug">
+                  <span className="text-lg md:text-xl font-semibold text-white leading-snug tracking-[-0.01em]">
                     {b}
                   </span>
                 </motion.li>
