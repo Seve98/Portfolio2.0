@@ -90,38 +90,20 @@ export function Footer() {
 
           <div className="md:col-span-4 flex flex-col gap-5">
             <h4 className="text-lg font-bold text-white leading-snug">
-              Iscriviti alla newsletter
+              Hai un progetto?
               <br />
               <span className="text-zinc-400 font-medium">
-                per gli ultimi aggiornamenti
+                Raccontamelo, ti rispondo io.
               </span>
             </h4>
 
-            <form
-              action={`mailto:${profile.email}`}
-              method="post"
-              encType="text/plain"
-              className="flex items-center rounded-full border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] p-1 pl-5 h-14"
+            <Link
+              href="#contatti"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-red text-black h-12 px-6 text-sm font-medium hover:bg-accent-red-soft press"
             >
-              <label htmlFor="newsletter-email" className="sr-only">
-                Email
-              </label>
-              <input
-                id="newsletter-email"
-                name="email"
-                type="email"
-                required
-                placeholder="tu@email.com"
-                className="flex-1 bg-transparent text-sm text-white placeholder:text-zinc-600 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 rounded-full bg-accent-red text-black h-11 px-5 text-sm font-medium hover:bg-accent-red-soft press"
-              >
-                Iscriviti
-                <ArrowRight size={14} />
-              </button>
-            </form>
+              Scrivimi
+              <ArrowRight size={14} />
+            </Link>
 
             <div className="flex flex-col gap-3 pt-2">
               <span className="text-sm font-bold text-white">Seguimi</span>
