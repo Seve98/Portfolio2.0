@@ -1,6 +1,8 @@
 "use server";
 
+import { Resend } from "resend";
 import { z } from "zod";
+import { profile } from "@/lib/data/profile";
 
 const ContactSchema = z.object({
   name: z.string().trim().min(1, "Il nome è obbligatorio.").max(80, "Massimo 80 caratteri"),
@@ -53,19 +55,46 @@ export async function submitContact(
     return { status: "success", message: "Grazie, ti rispondo presto." };
   }
 
-  // TODO cliente: agganciare provider email (Resend / SMTP / API custom).
-  // Per ora simuliamo latency + log server.
-  await new Promise((r) => setTimeout(r, 700));
-  // eslint-disable-next-line no-console
-  console.log("[contact]", {
-    name: parsed.data.name,
-    email: parsed.data.email,
-    subject: parsed.data.subject,
-    at: new Date().toISOString(),
-  });
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("[contact] RESEND_API_KEY mancante: messaggio non inviato.");
+    return sendFailure();
+  }
+
+  const { name, email, subject, message } = parsed.data;
+  const resend = new Resend(apiKey);
+
+  try {
+    const { error } = await resend.emails.send({
+      from: `Portfolio <${process.env.CONTACT_FROM_EMAIL ?? DEFAULT_FROM}>`,
+      to: process.env.CONTACT_TO_EMAIL ?? profile.email,
+      replyTo: email,
+      subject: `[Portfolio] ${subject}`,
+      text: `${message}\n\n${name} <${email}>\nInviato dal form di ${process.env.NEXT_PUBLIC_SITE_URL ?? "portfolio"}`,
+    });
+
+    if (error) {
+      console.error("[contact] Resend ha rifiutato l'invio:", error.name, error.message);
+      return sendFailure();
+    }
+  } catch (err) {
+    console.error("[contact] Invio fallito:", err);
+    return sendFailure();
+  }
 
   return {
     status: "success",
-    message: "Messaggio inviato con successo!",
+    message: "Messaggio inviato. Ti rispondo presto.",
+  };
+}
+
+const DEFAULT_FROM = "form@severinosantalucia.dev";
+
+// Never claim success when the email did not leave: the visitor gets the
+// direct address instead, so the contact is not lost.
+function sendFailure(): ContactState {
+  return {
+    status: "error",
+    message: `Invio non riuscito. Scrivimi direttamente a ${profile.email}.`,
   };
 }
