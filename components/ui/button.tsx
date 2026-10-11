@@ -52,6 +52,23 @@ export const Button = forwardRef<
 
   if (props.as === "a") {
     const { href, target, rel } = props;
+    // Files and external URLs are not routes: next/link would prefetch them as
+    // RSC payloads and log a 404 (e.g. the CV PDF).
+    const isFile = /\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0]);
+    const isExternal = /^(https?:|mailto:|tel:)/.test(href);
+    if (isFile || isExternal) {
+      return (
+        <a
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          href={href}
+          target={target}
+          rel={rel}
+          className={cls}
+        >
+          {children}
+        </a>
+      );
+    }
     return (
       <Link
         ref={ref as React.Ref<HTMLAnchorElement>}
