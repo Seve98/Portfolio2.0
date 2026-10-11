@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 import { submitContact, type ContactState } from "@/actions/contact.actions";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const initial: ContactState = { status: "idle" };
@@ -122,8 +123,14 @@ export function ContactForm() {
       </div>
 
       <div className="flex items-center justify-between gap-4 flex-wrap pt-2 border-t relative z-10">
-        <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-600">
-          dati usati solo per rispondere
+        <p className="text-xs text-zinc-400">
+          Uso i tuoi dati solo per risponderti.{" "}
+          <Link
+            href="/privacy"
+            className="text-white underline underline-offset-4 hover:text-accent-red"
+          >
+            Privacy
+          </Link>
         </p>
         <SubmitInner />
       </div>

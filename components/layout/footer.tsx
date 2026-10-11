@@ -16,12 +16,12 @@ const iconMap = {
 };
 
 const quickLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Chi sono", href: "#chi-sono" },
-  { name: "Esperienza", href: "#esperienza" },
-  { name: "Progetti", href: "#progetti" },
-  { name: "Competenze", href: "#expertise" },
-  { name: "Contatti", href: "#contatti" },
+  { name: "Home", href: "/#home" },
+  { name: "Chi sono", href: "/#chi-sono" },
+  { name: "Esperienza", href: "/#esperienza" },
+  { name: "Progetti", href: "/#progetti" },
+  { name: "Competenze", href: "/#expertise" },
+  { name: "Contatti", href: "/#contatti" },
 ];
 
 export function Footer() {
@@ -32,7 +32,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
           <div className="md:col-span-5 flex flex-col gap-6">
-            <Link href="#home" className="press inline-flex w-fit">
+            <Link href="/#home" className="press inline-flex w-fit">
               <BrandWordmark />
             </Link>
             <p className="text-lg md:text-xl font-semibold text-white leading-snug max-w-[36ch]">
@@ -98,7 +98,7 @@ export function Footer() {
             </h4>
 
             <Link
-              href="#contatti"
+              href="/#contatti"
               className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-red text-black h-12 px-6 text-sm font-medium hover:bg-accent-red-soft press"
             >
               Scrivimi
@@ -137,11 +137,8 @@ export function Footer() {
             © {year} {profile.name}. Tutti i diritti riservati.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-zinc-500 hover:text-white press">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-zinc-500 hover:text-white press">
-              Termini e Condizioni
+            <Link href="/privacy" className="text-zinc-500 hover:text-white press">
+              Privacy
             </Link>
           </div>
         </div>
