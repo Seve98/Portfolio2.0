@@ -20,7 +20,6 @@ export async function Hero() {
   const s = await fetchGithubStats(profile.githubUser);
   const stats = [
     { value: `${s.reposCount}`, label: "REPO" },
-    { value: `${s.totalStars}`, label: "STELLE" },
     { value: `${s.languages.length}`, label: "LINGUE" },
     { value: formatRelative(s.lastPushAt), label: "ULTIMO PUSH" },
   ];

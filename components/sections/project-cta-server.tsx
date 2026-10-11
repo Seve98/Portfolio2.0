@@ -5,9 +5,6 @@ import { ProjectCTAView } from "./project-cta";
 export async function ProjectCTA() {
   const stats = await fetchGithubStats(profile.githubUser);
   return (
-    <ProjectCTAView
-      reposCount={stats.reposCount}
-      totalStars={stats.totalStars}
-    />
+    <ProjectCTAView reposCount={stats.reposCount} />
   );
 }
