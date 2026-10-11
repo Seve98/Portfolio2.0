@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { reveal, RISE, stagger, VIEWPORT } from "@/lib/motion";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,14 +29,10 @@ export function TimelineItem({
   return (
     <motion.li
       className={cn("relative pl-12 md:pl-14", !isLast && "pb-10")}
-      initial={reduced ? false : { opacity: 0, y: 30 }}
+      initial={reduced ? false : { opacity: 0, y: RISE }}
       whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
+      viewport={VIEWPORT}
+      transition={reveal(stagger(index))}
     >
       <motion.span
         aria-hidden

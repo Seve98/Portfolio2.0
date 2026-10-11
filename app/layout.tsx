@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Footer } from "@/components/layout/footer";
+import { MotionProvider } from "@/components/motion-provider";
 import { baseMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -32,10 +33,12 @@ export default function RootLayout({
           Salta al contenuto
         </a>
         <div className="bg-grain-overlay" aria-hidden />
-        <main id="main" className="relative">
-          {children}
-        </main>
-        <Footer />
+        <MotionProvider>
+          <main id="main" className="relative">
+            {children}
+          </main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

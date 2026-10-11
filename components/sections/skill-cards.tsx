@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { reveal, RISE, VIEWPORT } from "@/lib/motion";
 
 type Stat = {
   label: string;
@@ -23,10 +24,10 @@ export function SkillCardsView({ stats }: Props) {
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.div
-          initial={reduced ? false : { opacity: 0, y: 30 }}
+          initial={reduced ? false : { opacity: 0, y: RISE }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          viewport={VIEWPORT}
+          transition={reveal()}
           className="flex flex-col items-start gap-6 md:gap-10"
         >
           <p className="font-mono text-[11px] md:text-xs uppercase tracking-[0.22em] text-accent-red">

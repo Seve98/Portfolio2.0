@@ -9,6 +9,7 @@ import {
   useScroll,
   AnimatePresence,
 } from "framer-motion";
+import { DURATION, EASE_OUT, reveal, stagger } from "@/lib/motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/data/profile";
 import { cn } from "@/lib/utils";
@@ -42,7 +43,7 @@ export function Navbar() {
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={reveal(0, DURATION.base)}
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
           scrolled
@@ -101,7 +102,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: DURATION.fast, ease: EASE_OUT }}
             className="fixed inset-0 z-[80] lg:hidden bg-[rgb(var(--bg))] flex flex-col"
             role="dialog"
             aria-modal="true"
@@ -121,9 +122,9 @@ export function Navbar() {
               {links.map((l, i) => (
                 <motion.li
                   key={l.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.3 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={reveal(0.05 + stagger(i, 6) * 0.6, 0.5)}
                 >
                   <Link
                     href={l.href}
@@ -138,7 +139,7 @@ export function Navbar() {
                 className="mt-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * links.length, duration: 0.3 }}
+                transition={reveal(0.05 + stagger(links.length, 6) * 0.6, 0.5)}
               >
                 <Link
                   href="#contatti"

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { reveal, RISE, stagger, VIEWPORT } from "@/lib/motion";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { devSkills } from "@/lib/data/skills";
 import { SectionLabel } from "./about";
@@ -17,10 +18,10 @@ export function DevSkills() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: RISE }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="lg:col-span-5 flex flex-col gap-4"
           >
             <h2
@@ -39,10 +40,10 @@ export function DevSkills() {
             {devSkills.map((s, i) => (
               <motion.li
                 key={s.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: RISE }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: 0.08 * i }}
+                viewport={VIEWPORT}
+                transition={reveal(stagger(i))}
               >
                 <ProgressBar name={s.name} percent={s.percent} variant="red" />
               </motion.li>

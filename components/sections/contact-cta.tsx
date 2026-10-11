@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { reveal, RISE, stagger, VIEWPORT, STAGGER } from "@/lib/motion";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "./contact-form";
@@ -47,10 +48,10 @@ export function ContactCTA() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="lg:col-span-5 flex flex-col gap-8"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-red">
@@ -102,10 +103,10 @@ export function ContactCTA() {
                 return (
                   <motion.li
                     key={label}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.4, delay: 0.1 * i }}
+                    initial={{ opacity: 0, y: RISE }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={VIEWPORT}
+                    transition={reveal(stagger(i))}
                     className={i < contactItems.length - 1 ? "border-b" : ""}
                   >
                     {href ? (
@@ -126,10 +127,10 @@ export function ContactCTA() {
             </ul>
 
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: RISE }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={VIEWPORT}
+              transition={reveal(STAGGER * 4)}
               className="flex items-center gap-2"
             >
               <Button
@@ -151,10 +152,10 @@ export function ContactCTA() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal(STAGGER)}
             className="lg:col-span-7"
           >
             <ContactForm />

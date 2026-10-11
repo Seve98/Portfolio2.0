@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { reveal, VIEWPORT } from "@/lib/motion";
 import { Asterisk } from "lucide-react";
 
 type Props = {
@@ -27,8 +28,8 @@ export function MarqueeStrip({ items = defaultItems, variant = "solid" }: Props)
       aria-hidden
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
+      viewport={VIEWPORT}
+      transition={reveal()}
       className="relative border-y overflow-hidden bg-[rgb(var(--bg-elev))]"
     >
       <div

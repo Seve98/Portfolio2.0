@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { reveal, RISE, stagger, VIEWPORT, STAGGER } from "@/lib/motion";
 import { ArrowUpRight, Quote } from "lucide-react";
 import { Github } from "@/components/ui/brand-icons";
 import { profile } from "@/lib/data/profile";
@@ -16,10 +17,10 @@ export function About() {
     >
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: RISE }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT}
+          transition={reveal()}
           className="inline-flex items-center gap-3 mb-10"
         >
           <span className="size-2 rounded-full bg-accent-red" />
@@ -29,19 +30,19 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 md:mb-20">
           <motion.h2
             id="about-title"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: RISE }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="lg:col-span-7 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-[-0.02em] max-w-[18ch]"
           >
             Sviluppatore guidato da scopo e precisione
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: RISE }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={VIEWPORT}
+            transition={reveal(STAGGER)}
             className="lg:col-span-5 self-end text-sm md:text-base text-zinc-400 leading-relaxed max-w-[42ch]"
           >
             Sviluppo applicazioni web moderne con focus su React, Next.js e
@@ -52,10 +53,10 @@ export function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="lg:col-span-6 flex flex-col gap-6"
           >
             <div className="relative rounded-2xl border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] p-8 md:p-10">
@@ -103,20 +104,20 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal(STAGGER)}
             className="lg:col-span-6 flex flex-col gap-6"
           >
             <ul className="flex flex-col">
               {bullets.map((b, i) => (
                 <motion.li
                   key={b}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4, delay: 0.1 * i }}
+                  initial={{ opacity: 0, y: RISE }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VIEWPORT}
+                  transition={reveal(stagger(i))}
                   className="flex items-start gap-5 py-5 border-b border-[rgb(var(--border))] last:border-0"
                 >
                   <span className="font-mono text-xs text-accent-red tabular-nums shrink-0 mt-2 tracking-[0.1em]">
@@ -138,10 +139,10 @@ export function About() {
 export function SectionLabel({ num, label }: { num: string; label: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: RISE }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VIEWPORT}
+      transition={reveal()}
       className="flex items-center gap-3 mb-10"
     >
       <span className="size-2 rounded-full bg-accent-red" />

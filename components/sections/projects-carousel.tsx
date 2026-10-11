@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { reveal, RISE, STAGGER, VIEWPORT } from "@/lib/motion";
 import { ProjectCard } from "@/components/ui/project-card";
 import type { GithubProject } from "@/lib/github";
 
@@ -45,11 +47,11 @@ export function ProjectsCarousel({ projects }: Props) {
       />
 
       {single ? (
-        <CarouselRow items={doubled} duration={50} />
+        <CarouselRow items={doubled} duration={50} order={0} />
       ) : (
         <div className="flex flex-col gap-6">
-          <CarouselRow items={rowATop} duration={55} />
-          <CarouselRow items={rowBBottom} duration={65} reverse />
+          <CarouselRow items={rowATop} duration={55} order={0} />
+          <CarouselRow items={rowBBottom} duration={65} order={1} reverse />
         </div>
       )}
     </div>
@@ -59,36 +61,48 @@ export function ProjectsCarousel({ projects }: Props) {
 function CarouselRow({
   items,
   duration,
+  order,
   reverse,
 }: {
   items: GithubProject[];
   duration: number;
+  order: number;
   reverse?: boolean;
 }) {
+  // Reveal the whole row once: per-card reveals would fire one by one as cards
+  // slide in from the side, which reads as stutter inside a marquee.
   return (
-    <div
-      className="group/row relative flex w-max gap-5 px-6 md:px-10 will-change-transform"
-      style={{
-        animation: `carousel-scroll ${duration}s linear infinite`,
-        animationDirection: reverse ? "reverse" : "normal",
-        animationPlayState: "running",
-      }}
-      onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLDivElement).style.animationPlayState = "paused")
-      }
-      onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLDivElement).style.animationPlayState =
-          "running")
-      }
+    <motion.div
+      initial={{ opacity: 0, y: RISE }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VIEWPORT}
+      transition={reveal(order * STAGGER * 2)}
     >
-      {items.map((p, i) => (
-        <div
-          key={`${p.slug}-${i}`}
-          className="w-[320px] sm:w-[380px] md:w-[420px] shrink-0"
-        >
-          <ProjectCard project={p} index={i} />
-        </div>
-      ))}
-    </div>
+      <div
+        className="group/row relative flex w-max gap-5 px-6 md:px-10 will-change-transform"
+        style={{
+          animation: `carousel-scroll ${duration}s linear infinite`,
+          animationDirection: reverse ? "reverse" : "normal",
+          animationPlayState: "running",
+        }}
+        onMouseEnter={(e) =>
+          ((e.currentTarget as HTMLDivElement).style.animationPlayState =
+            "paused")
+        }
+        onMouseLeave={(e) =>
+          ((e.currentTarget as HTMLDivElement).style.animationPlayState =
+            "running")
+        }
+      >
+        {items.map((p, i) => (
+          <div
+            key={`${p.slug}-${i}`}
+            className="w-[320px] sm:w-[380px] md:w-[420px] shrink-0"
+          >
+            <ProjectCard project={p} />
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 }

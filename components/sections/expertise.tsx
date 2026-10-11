@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { reveal, RISE, stagger, VIEWPORT } from "@/lib/motion";
 import { Palette, Layout, Sparkles } from "lucide-react";
 import { expertise, technologies, type ExpertiseCard } from "@/lib/data/skills";
 import { TechIcon } from "@/components/ui/tech-icon";
@@ -23,10 +24,10 @@ export function Expertise() {
     >
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: RISE }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT}
+          transition={reveal()}
           className="inline-flex items-center gap-3 mb-12"
         >
           <span className="size-2 rounded-full bg-accent-red" />
@@ -37,10 +38,10 @@ export function Expertise() {
 
         <motion.h2
           id="expertise-title"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: RISE }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
+          viewport={VIEWPORT}
+          transition={reveal()}
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-[-0.02em] max-w-[64ch] mb-20 md:mb-28"
         >
           Aiuto aziende e founder a trasformare idee in prodotti digitali
@@ -56,10 +57,10 @@ export function Expertise() {
               return (
                 <motion.article
                   key={e.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                  initial={{ opacity: 0, y: RISE }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VIEWPORT}
+                  transition={reveal(stagger(i))}
                   whileHover={{ y: -4 }}
                   className="group flex items-start gap-4 p-5 rounded-2xl border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] hover:border-accent-red press"
                 >
@@ -80,10 +81,10 @@ export function Expertise() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: RISE }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="lg:col-span-8 relative flex flex-col gap-8"
           >
             <h3
@@ -99,10 +100,10 @@ export function Expertise() {
               {technologies.map((t, i) => (
                 <motion.li
                   key={t.name}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: RISE }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.35, delay: 0.04 * i }}
+                  viewport={VIEWPORT}
+                  transition={reveal(stagger(i))}
                   whileHover={{ y: -3 }}
                   className="group flex items-center gap-3 rounded-xl border border-[rgb(var(--border-strong))] bg-[rgb(var(--card))] px-4 py-3 hover:border-accent-red press"
                 >

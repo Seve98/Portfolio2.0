@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { RISE, reveal } from "@/lib/motion";
 import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/layout/navbar";
 import { profile } from "@/lib/data/profile";
@@ -33,13 +34,9 @@ export function HeroContent({ stats }: Props) {
       <div className="relative z-10 min-h-[100dvh] flex flex-col px-6 md:px-10 pt-32 md:pt-32 pb-16">
         <div className="max-w-[1500px] mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-end">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.3,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
+            initial={{ opacity: 0, y: RISE * 1.5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={reveal(0.25, 0.9)}
             className="lg:col-span-3 order-2 lg:order-1 lg:pb-12"
           >
             <h1 className="font-medium tracking-[-0.055em] leading-[0.82] text-white">
@@ -56,13 +53,9 @@ export function HeroContent({ stats }: Props) {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: RISE * 2 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1.1,
-              delay: 0.2,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
+            transition={reveal(0.1, 1.1)}
             className="lg:col-span-6 order-1 lg:order-2 relative flex items-end justify-center"
           >
             <div className="relative aspect-square w-full max-w-[900px]">
@@ -79,9 +72,9 @@ export function HeroContent({ stats }: Props) {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}
+            initial={{ opacity: 0, y: RISE * 1.5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={reveal(0.35, 0.9)}
             className="lg:col-span-3 order-3 flex flex-col gap-6 lg:pb-12"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-white">
@@ -114,9 +107,9 @@ export function HeroContent({ stats }: Props) {
 
         <div className="max-w-[1500px] mx-auto w-full mt-10 flex flex-col gap-8">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: RISE }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
+            transition={reveal(0.5)}
             className="flex items-center justify-center gap-3 text-sm md:text-base text-zinc-300"
           >
             <span className="size-2 rounded-full bg-accent-red" />
@@ -129,10 +122,10 @@ export function HeroContent({ stats }: Props) {
 
           {stats.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: RISE }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[rgb(var(--border))]"
+              transition={reveal(0.6)}
+              className="grid grid-cols-3 gap-6 pt-6 border-t border-[rgb(var(--border))]"
             >
               {stats.map((stat) => (
                 <motion.div

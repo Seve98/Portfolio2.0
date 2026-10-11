@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { reveal, RISE, STAGGER, VIEWPORT } from "@/lib/motion";
 import { Github, Linkedin, XTwitter } from "@/components/ui/brand-icons";
 import { profile } from "@/lib/data/profile";
 
@@ -26,10 +27,10 @@ export function SocialProof() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal()}
             className="md:col-span-6 flex items-start gap-4 pl-1"
           >
             <span
@@ -43,10 +44,10 @@ export function SocialProof() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            initial={{ opacity: 0, y: RISE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT}
+            transition={reveal(STAGGER)}
             className="md:col-span-6 flex flex-wrap items-center gap-3 md:justify-end"
           >
             {socials.map((s) => {

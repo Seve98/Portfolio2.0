@@ -9,6 +9,7 @@ import {
   useTransform,
   animate,
 } from "framer-motion";
+import { DURATION, EASE_OUT } from "@/lib/motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -41,8 +42,8 @@ export function ProgressBar({ name, percent, className, variant = "white" }: Pro
       return;
     }
     const controls = animate(value, percent, {
-      duration: 1.1,
-      ease: [0.33, 1, 0.68, 1],
+      duration: DURATION.slow,
+      ease: EASE_OUT,
     });
     return () => controls.stop();
   }, [inView, reduced, percent, value]);
@@ -63,7 +64,7 @@ export function ProgressBar({ name, percent, className, variant = "white" }: Pro
           )}
           initial={{ scaleX: reduced ? targetScale : 0 }}
           animate={{ scaleX: inView ? targetScale : reduced ? targetScale : 0 }}
-          transition={{ duration: 1.1, ease: [0.33, 1, 0.68, 1] }}
+          transition={{ duration: DURATION.slow, ease: EASE_OUT }}
         />
       </div>
     </div>
